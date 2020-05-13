@@ -1,0 +1,35 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "tsc": "tsc",
+    "start": "set debug=* && ts-node-dev --respawn --transpileOnly ./src/index.ts",
+    "prod": "tsc && node ./build/src/index.js",
+    "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run"
+  },
+  "dependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/body-parser": "^1.19.0",
+    "@types/cors": "^2.8.6",
+    "@types/jsonwebtoken": "^8.3.9",
+    "@types/node": "^14.0.1",
+    "bcrypt": "^4.0.1",
+    "body-parser": "^1.19.0",
+    "class-validator": "^0.12.2",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "http-status-codes": "^1.4.0",
+    "jsonwebtoken": "^8.5.1",
+    "reflect-metadata": "^0.1.13",
+    "sqlite3": "^4.2.0",
+    "ts-node": "^8.10.1",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typeorm": "^0.2.24",
+    "typescript": "^3.9.2"
+  },
+  "resolutions": {
+    "tslib": "1.11.2"
+  }
+}
