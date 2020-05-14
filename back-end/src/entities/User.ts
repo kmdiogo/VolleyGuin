@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 import { compareSync, hashSync } from 'bcrypt'
 import { Length } from 'class-validator'
 
@@ -8,13 +8,7 @@ export class User {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({nullable: true})
-    firstName: string;
-
-    @Column({nullable: true})
-    lastName: string;
-
-    @Column()
+    @Column({ unique: true })
     @Length(4, 20)
     username: string;
 
