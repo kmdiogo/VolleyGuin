@@ -5,7 +5,6 @@ import {
     StepLabel
 } from '@material-ui/core'
 import PropTypes from 'prop-types'
-import {StayPrimaryPortrait} from "@material-ui/icons";
 
 function StepperGenerator(props) {
     const { stepperPages, activeStep } = props

@@ -1,16 +1,17 @@
 import React from 'react';
 import AddIcon from "@material-ui/icons/Add"
 import {
-    Grid
+    Box,
 } from "@material-ui/core"
 import PlayerCard from "./PlayerCard/PlayerCard";
 import PrimaryActionFab from "../../shared/PrimaryActionFab";
+import ItemGrid from "../../material-utility/ItemGrid";
 
 const players = [
     { firstName: 'Dom', lastName: 'Eorio', position: 'President' },
     { firstName: 'Matt', lastName: 'Hone', position: 'Vice President' },
     { firstName: 'Nick', lastName: 'Petho', position: 'Nerd' },
-    {firstName: 'Luke', lastName: 'from Cafaro', position: 'CONST: fuck that bitch'}
+    {firstName: 'Luke', lastName: 'FromCafaro', position: 'CONST: fuck that bitch'}
 ]
 function Players() {
     const [state, setState] = React.useState({
@@ -27,8 +28,17 @@ function Players() {
         ],
     });
 
+    const playerGridItems = players.map(player => ({
+        ...player,
+        component: <PlayerCard player={player} />
+    }))
+
     return (
-        <Grid container spacing={2}>
+        <Box>
+            <ItemGrid items={playerGridItems} colsPerItem={4} sortBy={'lastName'} searchBy={['firstName', 'lastName']} />
+            <PrimaryActionFab icon={<AddIcon />} />
+        </Box>
+        /*<Grid container spacing={2}>
             {
                 players.map(player => (
                     <Grid item xs={4}>
@@ -36,8 +46,19 @@ function Players() {
                     </Grid>
                 ))
             }
-            <PrimaryActionFab icon={<AddIcon />} />
-        </Grid>
+
+        </Grid>*/
+        /*<Paper>
+            <GridList>
+                {
+                    players.map(player => (
+                        <GridListTile>
+                            <PlayerCard player={player} />
+                        </GridListTile>
+                    ))
+                }
+            </GridList>
+        </Paper>*/
     );
 }
 
