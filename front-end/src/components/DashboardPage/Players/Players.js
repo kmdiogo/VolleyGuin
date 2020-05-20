@@ -9,7 +9,8 @@ import PrimaryActionFab from "../../shared/PrimaryActionFab";
 const players = [
     { firstName: 'Dom', lastName: 'Eorio', position: 'President' },
     { firstName: 'Matt', lastName: 'Hone', position: 'Vice President' },
-    { firstName: 'Nick', lastName: 'Petho', position: 'Nerd' }
+    { firstName: 'Nick', lastName: 'Petho', position: 'Nerd' },
+    {firstName: 'Luke', lastName: 'from Cafaro', position: 'CONST: fuck that bitch'}
 ]
 function Players() {
     const [state, setState] = React.useState({
