@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
-import { IsEmail } from "class-validator";
+import { IsEmail, MaxLength, IsOptional } from "class-validator";
 
 @Entity()
 export class Player {
@@ -16,9 +16,15 @@ export class Player {
     @Column()
     lastName: string;
 
-    @Column()
+    @Column({nullable: true})
+    @IsOptional()
     @IsEmail()
     email: string
+
+    @Column({nullable: true})
+    @IsOptional()
+    @MaxLength(500)
+    comment: string
 
 
 }

@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
-import { MaxLength } from 'class-validator'
+import {IsOptional, MaxLength} from 'class-validator'
 
 @Entity()
 export class Jersey {
@@ -10,7 +10,8 @@ export class Jersey {
     @Column({ unique: true })
     number: number;
 
-    @Column()
+    @Column({nullable: true})
+    @IsOptional()
     @MaxLength(500)
     comment: string;
 
