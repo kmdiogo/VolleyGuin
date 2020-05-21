@@ -20,12 +20,12 @@ const useStyles = makeStyles(theme => ({
 }))
 
 function PlayerCard(props) {
-    const { player } = props
+    const { player, onClick } = props
     const classes = useStyles()
 
     return (
         <Card>
-            <CardActionArea>
+            <CardActionArea onClick={() => {onClick(player)}}>
                 <CardContent>
                     <Box display="flex" justifyContent="center" mb={2}>
                         <Avatar className={classes.avatar} />
@@ -45,7 +45,8 @@ function PlayerCard(props) {
 }
 
 PlayerCard.propTypes = {
-    player: PropTypes.object.isRequired
+    player: PropTypes.object.isRequired,
+    onClick: PropTypes.func
 }
 
 export default PlayerCard

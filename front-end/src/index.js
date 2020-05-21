@@ -4,15 +4,17 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {MuiThemeProvider, createMuiTheme} from "@material-ui/core";
+import MomentUtils from "@date-io/moment";
+import {MuiPickersUtilsProvider} from "@material-ui/pickers";
 
 const theme = createMuiTheme({
     palette: {
         primary: {
-            main: '#a2182f',
+            main: '#a71930',
         },
         secondary: {
             light: '#A0A0A0',
-            main: '#696969',
+            main: '#6d6d6d',
             contrastText: '#000',
         },
         contrastThreshold: 3,
@@ -22,9 +24,11 @@ const theme = createMuiTheme({
 
 ReactDOM.render(
   <React.StrictMode>
-      <MuiThemeProvider theme={theme}>
-          <App />
-      </MuiThemeProvider>
+      <MuiPickersUtilsProvider utils={MomentUtils}>
+          <MuiThemeProvider theme={theme}>
+              <App />
+          </MuiThemeProvider>
+      </MuiPickersUtilsProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

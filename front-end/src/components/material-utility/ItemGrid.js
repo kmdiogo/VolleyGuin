@@ -9,6 +9,8 @@ import {
 } from "@material-ui/core"
 import SortIcon from "@material-ui/icons/Sort"
 import SearchIcon from "@material-ui/icons/Search"
+import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward"
+import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward"
 import {orderBy} from 'lodash'
 import {useInput} from "../../hooks/useInput";
 
@@ -40,6 +42,12 @@ function ItemGrid(props) {
         setSortMode(newSortMode)
     }
 
+    const SortDirection = () => {
+        if (sortMode === 1) { return <ArrowUpwardIcon /> }
+        if (sortMode === 2) { return <ArrowDownwardIcon /> }
+        return null
+    }
+
     return (
         <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -47,6 +55,7 @@ function ItemGrid(props) {
                     <Button onClick={handleSortClick}>
                         Sort
                         <SortIcon  />
+                        <SortDirection />
                     </Button>
                     <Box ml="auto">
                         <Input
