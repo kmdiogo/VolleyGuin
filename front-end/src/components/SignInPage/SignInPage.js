@@ -10,32 +10,8 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
+import { makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
-const theme = createMuiTheme({
-    palette: {
-        primary: {
-            // light: will be calculated from palette.primary.main,
-            main: '#a2182f',
-            // dark: will be calculated from palette.primary.main,
-            // contrastText: will be calculated to contrast with palette.primary.main
-        },
-        secondary: {
-            light: '#A0A0A0',
-            main: '#696969',
-            // dark: will be calculated from palette.secondary.main,
-            contrastText: '#ffcc00',
-        },
-        // Used by `getContrastText()` to maximize the contrast between
-        // the background and the text.
-        contrastThreshold: 3,
-        // Used by the functions below to shift a color's luminance by approximately
-        // two indexes within its tonal palette.
-        // E.g., shift from Red 500 to Red 300 or Red 700.
-        tonalOffset: 0.2,
-    },
-});
 
 function Copyright() {
     return (
@@ -114,7 +90,7 @@ export default function SignIn() {
                         type="submit"
                         fullWidth
                         variant="contained"
-                        color="primary"
+                        color= "primary"
                         className={classes.submit}
                     >
                         Sign In
