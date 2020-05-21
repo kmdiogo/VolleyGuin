@@ -22,6 +22,8 @@ import Home from "./Home/Home";
 import Jerseys from "./Jerseys/Jerseys";
 import Players from "./Players/Players";
 import Travel from "./Travel/Travel";
+import Drivers from "./Drivers/Drivers";
+import Logo from '../Logo/Logo';
 
 export default function Dashboard() {
     const match = useRouteMatch();
@@ -67,6 +69,7 @@ export default function Dashboard() {
                 open={open}
             >
                 <div className={classes.toolbarIcon}>
+                    <Logo/>
                     <h2>VolleyGuin</h2>
                     <IconButton onClick={handleDrawerClose}>
                         <ChevronLeftIcon />
@@ -84,6 +87,7 @@ export default function Dashboard() {
                         <Route path={`/jerseys`} active component={Jerseys} />
                         <Route path={`/players`} component={Players} />
                         <Route path={`/travel`} component={Travel} />
+                        <Route path={'/drivers'} component={Drivers} />
                         <Route path="/" component={Home} />
                     </Switch>
                     <Box pt={4}>

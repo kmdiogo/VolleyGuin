@@ -18,6 +18,7 @@ function PlayerEmergency() {
             ]}
             data={[
                 { firstName: 'Deez', lastName: 'Nutz', phoneNumber: '(420) 420-6969' },
+                {firstName: 'Ur', lastName: 'Mom-Gay', phoneNumber: '(420) 420-1337'}
             ]}
         />
     )
