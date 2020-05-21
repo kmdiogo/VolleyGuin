@@ -6,21 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import {MuiThemeProvider, createMuiTheme} from "@material-ui/core";
 import MomentUtils from "@date-io/moment";
 import {MuiPickersUtilsProvider} from "@material-ui/pickers";
-
-const theme = createMuiTheme({
-    palette: {
-        primary: {
-            main: '#a71930',
-        },
-        secondary: {
-            light: '#A0A0A0',
-            main: '#6d6d6d',
-            contrastText: '#000',
-        },
-        contrastThreshold: 3,
-        tonalOffset: 0.2,
-    },
-});
+import {theme} from "./colorTheme";
 
 ReactDOM.render(
   <React.StrictMode>
