@@ -12,7 +12,7 @@ const players = [
     { firstName: 'Dom', lastName: 'Eorio', position: 'President' },
     { firstName: 'Matt', lastName: 'Hone', position: 'Vice President' },
     { firstName: 'Nick', lastName: 'Petho', position: 'Nerd' },
-    { firstName: 'Luke', lastName: 'FromCafaro', position: 'CONST: fuck that bitch' }
+    { firstName: 'Luke', lastName: 'FromCafaro', position: 'CONST: fuck_that_bitch' }
 ]
 
 function Players() {

@@ -3,10 +3,11 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import CardTravelIcon from '@material-ui/icons/CardTravel';
 import SportsVolleyballIcon from '@material-ui/icons/SportsVolleyball';
 import SportsHandballIcon from '@material-ui/icons/SportsHandball';
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import DriveEtaIcon from '@material-ui/icons/DriveEta';
+import AssignmentIcon from '@material-ui/icons/Assignment';
 import {Link} from "react-router-dom";
 import { useLocation } from 'react-router-dom'
 
@@ -24,19 +25,24 @@ export default function DrawerItems() {
             icon: <SportsHandballIcon />
         },
         {
+            to: '/lineup',
+            text: 'Line-Up',
+            icon: <SportsVolleyballIcon />
+        },
+        {
             to: '/travel',
             text: 'Travel',
-            icon: <CardTravelIcon />
+            icon: <DriveEtaIcon />
         },
         {
             to: '/jerseys',
             text: 'Jerseys',
-            icon: <SportsVolleyballIcon />
+            icon: <AssignmentIcon />
         },
         {
-            to: '/drivers',
-            text: 'Drivers',
-            icon: <DriveEtaIcon />
+            to: '/accounts',
+            text: 'Accounts',
+            icon: <SupervisorAccountIcon />
         },
     ]
     return (

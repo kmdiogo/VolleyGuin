@@ -1,9 +1,7 @@
 import React from 'react';
 import MaterialTable from "material-table";
 import PropTypes from 'prop-types'
-import AddBoxIcon from '@material-ui/icons/AddBox'
 import Typography from "@material-ui/core/Typography";
-import CardTravelIcon from "@material-ui/icons/CardTravel";
 
 function TravelListTable(props) {
     const { onRowAdd, onRowUpdate, onRowDelete } = props
@@ -12,7 +10,7 @@ function TravelListTable(props) {
         <MaterialTable
             title={
                 <Typography variant="h5">
-                    Travel <CardTravelIcon />
+                    Travel
                 </Typography>
             }
             columns={[

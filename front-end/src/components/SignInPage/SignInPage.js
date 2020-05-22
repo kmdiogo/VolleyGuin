@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -11,6 +11,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Logo from '../Logo/Logo';
+import { login } from '../../API/index';
+import {useInput} from "../../hooks/useInput";
 
 function Copyright() {
     return (
@@ -44,6 +46,22 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
     const classes = useStyles();
+    //const [username, setUsername] = useState('');
+    const [username, setUsername, bindUsername] = useInput('');
+    const [password, setPassword, bindPassword] = useInput('');
+    const [shouldValidate, setShouldValidate] = useState(false);
+
+    const isInvalid = () => {
+        return username === '' || password === '';
+    }
+
+    const handleSignIn = async () => {
+        setShouldValidate(true);
+        if (!isInvalid()){
+            const response = await login(username, password);
+            console.log(response);
+        }
+    }
 
     return (
         <Container component="main" maxWidth="xs">
@@ -64,6 +82,8 @@ export default function SignIn() {
                         name="email"
                         autoComplete="email"
                         autoFocus
+                        {...bindUsername}
+                        error={shouldValidate && username === ''}
                     />
                     <TextField
                         variant="outlined"
@@ -75,17 +95,19 @@ export default function SignIn() {
                         type="password"
                         id="password"
                         autoComplete="current-password"
+                        {...bindPassword}
                     />
                     <FormControlLabel
                         control={<Checkbox value="remember" color="primary" />}
                         label="Remember me"
                     />
                     <Button
-                        type="submit"
+                        //type="submit"
                         fullWidth
                         variant="contained"
                         color= "primary"
                         className={classes.submit}
+                        onClick={handleSignIn}
                     >
                         Sign In
                     </Button>

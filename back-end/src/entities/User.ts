@@ -1,12 +1,20 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 import { compareSync, hashSync } from 'bcrypt'
-import { Length } from 'class-validator'
+import {Length, min} from 'class-validator'
 
 @Entity()
 export class User {
 
     @PrimaryGeneratedColumn()
     id: number;
+
+    @Column()
+    @Length(1)
+    firstName: string;
+
+    @Column()
+    @Length(1)
+    lastName: string;
 
     @Column({ unique: true })
     @Length(4, 20)

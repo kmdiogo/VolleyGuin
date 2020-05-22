@@ -22,7 +22,8 @@ import Home from "./Home/Home";
 import Jerseys from "./Jerseys/Jerseys";
 import Players from "./Players/Players";
 import Travel from "./Travel/Travel";
-import Drivers from "./Drivers/Drivers";
+import Accounts from "./Accounts/Accounts";
+import Lineup from "./Lineup/Lineup";
 import Logo from '../Logo/Logo';
 
 export default function Dashboard() {
@@ -87,7 +88,8 @@ export default function Dashboard() {
                         <Route path={`/jerseys`} active component={Jerseys} />
                         <Route path={`/players`} component={Players} />
                         <Route path={`/travel`} component={Travel} />
-                        <Route path={'/drivers'} component={Drivers} />
+                        <Route path={'/accounts'} component={Accounts} />
+                        <Route path={'/lineup'} component={Lineup}/>
                         <Route path="/" component={Home} />
                     </Switch>
                     <Box pt={4}>
