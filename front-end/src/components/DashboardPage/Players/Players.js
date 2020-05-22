@@ -26,6 +26,10 @@ function Players() {
         setIsDialogOpen(false)
     }
 
+    function searchByFullName(item) {
+        return `${item.firstName} ${item.lastName}`
+    }
+
     const playerGridItems = players.map(player => ({
         ...player,
         component: <PlayerCard player={player} onClick={handlePlayerClick} />
@@ -33,7 +37,7 @@ function Players() {
 
     return (
         <Box>
-            <ItemGrid items={playerGridItems} colsPerItem={4} sortBy={'lastName'} searchBy={['firstName', 'lastName']} />
+            <ItemGrid items={playerGridItems} colsPerItem={4} sortBy={'lastName'} searchBy={[searchByFullName]} />
             <PlayerDialog open={isDialogOpen} onClose={handleDialogClose} />
             <PrimaryActionFab icon={<AddIcon />} />
         </Box>

@@ -5,7 +5,8 @@ import {
     Grid,
     Button,
     Input,
-    InputAdornment
+    InputAdornment,
+    Tooltip
 } from "@material-ui/core"
 import SortIcon from "@material-ui/icons/Sort"
 import SearchIcon from "@material-ui/icons/Search"
@@ -14,6 +15,20 @@ import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward"
 import {orderBy} from 'lodash'
 import {useInput} from "../../hooks/useInput";
 
+const sortModeMappings = [
+    {
+        icon: null,
+        tooltip: null
+    },
+    {
+        icon: <ArrowUpwardIcon />,
+        tooltip: 'Ascending'
+    },
+    {
+        icon: <ArrowDownwardIcon />,
+        tooltip: 'Descending'
+    },
+]
 function ItemGrid(props) {
     const { colsPerItem, items, searchBy, componentKey, sortBy } = props
     // 0 - no sort, 1 - ascending, 2 - descending
@@ -42,21 +57,32 @@ function ItemGrid(props) {
         setSortMode(newSortMode)
     }
 
-    const SortDirection = () => {
-        if (sortMode === 1) { return <ArrowUpwardIcon /> }
-        if (sortMode === 2) { return <ArrowDownwardIcon /> }
-        return null
+    const SortButton = () => {
+        if (sortMode > 0) {
+            return (
+                <Tooltip title={sortModeMappings[sortMode].tooltip}>
+                    <Button onClick={handleSortClick}>
+                        Sort
+                        <SortIcon  />
+                        { sortModeMappings[sortMode].icon }
+                    </Button>
+                </Tooltip>
+            )
+        }
+        return (
+            <Button onClick={handleSortClick}>
+                Sort
+                <SortIcon  />
+                { sortModeMappings[sortMode].icon }
+            </Button>
+        )
     }
 
     return (
         <Grid container spacing={2}>
             <Grid item xs={12}>
                 <Box display="flex">
-                    <Button onClick={handleSortClick}>
-                        Sort
-                        <SortIcon  />
-                        <SortDirection />
-                    </Button>
+                    <SortButton />
                     <Box ml="auto">
                         <Input
                             startAdornment={
@@ -81,8 +107,14 @@ function ItemGrid(props) {
                         return itemComponent
                     }
 
-                    for (const key of searchBy) {
-                        if (item[key].toLowerCase().includes(searchText.toLowerCase())) {
+                    for (const field of searchBy) {
+                        let comparisonItem;
+                        if (typeof field === 'function') {
+                            comparisonItem = field(item)
+                        } else {
+                            comparisonItem = item[field]
+                        }
+                        if (comparisonItem.toLowerCase().includes(searchText.toLowerCase())) {
                             return itemComponent
                         }
                     }

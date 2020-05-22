@@ -34,14 +34,14 @@ function VerticalTabs(props) {
                 className={classes.tabs}
             >
                 {
-                    tabLabels.map(label => (
-                        <Tab label={label} key={label} />
+                    tabLabels.map((label, i) => (
+                        <Tab label={label} key={i} />
                     ))
                 }
             </Tabs>
             {
                 children.map((child, i) => (
-                    <TabPanel index={i} value={value}>
+                    <TabPanel index={i} value={value} key={i}>
                         { child }
                     </TabPanel>
                 ))

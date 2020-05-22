@@ -1,45 +1,57 @@
 import React from "react";
 import {
     Dialog,
-    AppBar,
-    Toolbar,
-    IconButton,
-    Typography,
-    Button,
     Slide,
+    Button,
+    Container,
+    Divider,
     Box
 } from "@material-ui/core"
 import PropTypes from 'prop-types'
-import CloseIcon from "@material-ui/icons/Close"
-import PlayerDialogContents from "./PlayerDialogContents/PlayerDialogContents";
+import PlayerDialogAppBar from "./PlayerDialogAppBar/PlayerDialogAppBar";
+import PlayerBasicInfo from "./PlayerDialogContents/PlayerBasicInfo/PlayerBasicInfo";
+import PlayerEmergency from "./PlayerDialogContents/PlayerEmergency/PlayerEmergency";
+import PlayerDriverInfo from "./PlayerDialogContents/PlayerDriverInfo/PlayerDriverInfo";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />
 })
 
+const cardMargins = 5
+
 function PlayerDialog(props) {
     const { open, onClose } = props
+    const handleEmergencyAdd = (newData) => new Promise(resolve => {
+        console.log(newData)
+        resolve()
+    })
+    const handleEmergencyUpdate = (newData, oldData) => new Promise(resolve => {
+        console.log(newData)
+        console.log(oldData)
+        resolve()
+    })
+    const handleEmergencyDelete = (oldData) => new Promise(resolve => {
+        console.log(oldData)
+        resolve()
+    })
 
     return (
         <Dialog fullScreen open={open} TransitionComponent={Transition}>
-            <AppBar style={{position: 'relative'}}>
-                <Toolbar>
-                    <Box display="flex" alignItems="center" width="100%">
-                        <IconButton edge="start" color="inherit" onClick={onClose}>
-                            <CloseIcon />
-                        </IconButton>
-                        <Typography variant="h6">
-                            Player
-                        </Typography>
-                        <Box ml="auto">
-                            <Button autoFocus color="inherit" onClick={onClose}>
-                                Save
-                            </Button>
-                        </Box>
-                    </Box>
-                </Toolbar>
-            </AppBar>
-            <PlayerDialogContents />
+            <PlayerDialogAppBar onClose={onClose} />
+            <Container>
+                <Box my={cardMargins}>
+                    <PlayerBasicInfo />
+                </Box>
+                <Box mb={cardMargins}>
+                    <PlayerEmergency onRowAdd={handleEmergencyAdd} onRowDelete={handleEmergencyDelete} onRowUpdate={handleEmergencyUpdate} />
+                </Box>
+                <Box mb={cardMargins}>
+                    <PlayerDriverInfo />
+                </Box>
+                <Box display="flex" justifyContent="flex-end" mb={3}>
+                    <Button variant="contained" color="primary">Save</Button>
+                </Box>
+            </Container>
         </Dialog>
     )
 }

@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^7.1.2",
     "lodash": "^4.17.15",
     "material-table": "^1.57.2",
+    "material-ui-dropzone": "^3.0.0",
     "moment": "^2.25.3",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
