@@ -1,10 +1,9 @@
 import React from 'react';
+import LineupBoard from "./LineupBoard/LineupBoard";
 
 function Lineup() {
     return (
-        <main>
-            Lineup
-        </main>
+        <LineupBoard />
     );
 }
 

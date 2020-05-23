@@ -1,7 +1,6 @@
 import React from "react";
 import {
     Card,
-    CardActions,
     CardActionArea,
     CardContent,
     Avatar,
@@ -9,7 +8,6 @@ import {
     Box,
     Typography
 } from "@material-ui/core"
-import PropTypes from 'prop-types'
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
@@ -19,23 +17,22 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-function PlayerCard(props) {
-    const { player, onClick } = props
+function PlayerPlaceholder(props) {
     const classes = useStyles()
 
     return (
         <Card>
-            <CardActionArea onClick={() => {onClick(player)}}>
+            <CardActionArea>
                 <CardContent>
                     <Box display="flex" justifyContent="center" mb={2}>
                         <Avatar className={classes.avatar} />
                     </Box>
                     <Box display="flex" alignItems="center" flexDirection="column">
                         <Typography gutterBottom variant="h5" component="h2">
-                            { player.firstName } { player.lastName }
+                            Empty Slot
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
-                            { player.position }
+
                         </Typography>
                     </Box>
                 </CardContent>
@@ -44,13 +41,4 @@ function PlayerCard(props) {
     )
 }
 
-PlayerCard.propTypes = {
-    player: PropTypes.object.isRequired,
-    onClick: PropTypes.func
-}
-
-PlayerCard.defaultProps = {
-    onClick: () => {}
-}
-
-export default PlayerCard
+export default PlayerPlaceholder

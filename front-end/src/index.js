@@ -6,15 +6,19 @@ import * as serviceWorker from './serviceWorker';
 import {MuiThemeProvider, createMuiTheme} from "@material-ui/core";
 import MomentUtils from "@date-io/moment";
 import {MuiPickersUtilsProvider} from "@material-ui/pickers";
+import { DndProvider } from "react-dnd";
+import Backend from 'react-dnd-html5-backend'
 import {theme} from "./colorTheme";
 
 ReactDOM.render(
   <React.StrictMode>
-      <MuiPickersUtilsProvider utils={MomentUtils}>
-          <MuiThemeProvider theme={theme}>
-              <App />
-          </MuiThemeProvider>
-      </MuiPickersUtilsProvider>
+      <DndProvider backend={Backend}>
+          <MuiPickersUtilsProvider utils={MomentUtils}>
+              <MuiThemeProvider theme={theme}>
+                  <App />
+              </MuiThemeProvider>
+          </MuiPickersUtilsProvider>
+      </DndProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
