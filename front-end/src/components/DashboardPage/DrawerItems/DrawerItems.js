@@ -8,6 +8,7 @@ import SportsHandballIcon from '@material-ui/icons/SportsHandball';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import DriveEtaIcon from '@material-ui/icons/DriveEta';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import {Link} from "react-router-dom";
 import { useLocation } from 'react-router-dom'
 
@@ -37,6 +38,11 @@ export default function DrawerItems() {
         {
             to: '/jerseys',
             text: 'Jerseys',
+            icon: <AssignmentIndIcon />
+        },
+        {
+            to: '/forms',
+            text: 'Forms',
             icon: <AssignmentIcon />
         },
         {

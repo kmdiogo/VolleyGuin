@@ -24,6 +24,7 @@ import Players from "./Players/Players";
 import Travel from "./Travel/Travel";
 import Accounts from "./Accounts/Accounts";
 import Lineup from "./Lineup/Lineup";
+import Forms from "./Forms/Forms";
 import Logo from '../Logo/Logo';
 
 export default function Dashboard() {
@@ -90,6 +91,7 @@ export default function Dashboard() {
                         <Route path={`/travel`} component={Travel} />
                         <Route path={'/accounts'} component={Accounts} />
                         <Route path={'/lineup'} component={Lineup}/>
+                        <Route path={'/forms'} component={Forms}/>
                         <Route path="/" component={Home} />
                     </Switch>
                     <Box pt={4}>

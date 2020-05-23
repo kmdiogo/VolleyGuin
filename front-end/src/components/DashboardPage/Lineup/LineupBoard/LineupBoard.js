@@ -9,8 +9,8 @@ import update from 'immutability-helper'
 
 function LineupBoard() {
     const [players, setPlayers] = useState([
-        {firstName: 'John', lastName: 'Doe', position: ''},
-        {firstName: 'Nick', lastName: 'Petho', position: ''}
+        {firstName: 'John', lastName: 'Doe', position: 'Loser'},
+        {firstName: 'Nick', lastName: 'Petho', position: 'Cool Guy'}
     ])
 
     const [slots, setSlots] = useState([null, null, null, null, null, null])
