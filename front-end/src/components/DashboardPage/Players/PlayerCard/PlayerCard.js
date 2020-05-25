@@ -1,43 +1,20 @@
 import React from "react";
 import {
     Card,
-    CardActions,
     CardActionArea,
     CardContent,
-    Avatar,
-    Button,
-    Box,
-    Typography
 } from "@material-ui/core"
 import PropTypes from 'prop-types'
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles(theme => ({
-    avatar: {
-        width: theme.spacing(10),
-        height: theme.spacing(10)
-    }
-}))
+import PlayerCardContents from "./PlayerCardContents/PlayerCardContents";
 
 function PlayerCard(props) {
-    const { player, onClick } = props
-    const classes = useStyles()
+    const { player, onClick, elevation } = props
 
     return (
-        <Card>
+        <Card elevation={elevation}>
             <CardActionArea onClick={() => {onClick(player)}}>
                 <CardContent>
-                    <Box display="flex" justifyContent="center" mb={2}>
-                        <Avatar className={classes.avatar} />
-                    </Box>
-                    <Box display="flex" alignItems="center" flexDirection="column">
-                        <Typography gutterBottom variant="h5" component="h2">
-                            { player.firstName } { player.lastName }
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                            { player.position }
-                        </Typography>
-                    </Box>
+                    <PlayerCardContents player={player} />
                 </CardContent>
             </CardActionArea>
         </Card>
@@ -46,11 +23,12 @@ function PlayerCard(props) {
 
 PlayerCard.propTypes = {
     player: PropTypes.object.isRequired,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    elevation: PropTypes.number
 }
 
 PlayerCard.defaultProps = {
-    onClick: () => {}
+    onClick: () => {},
 }
 
 export default PlayerCard
