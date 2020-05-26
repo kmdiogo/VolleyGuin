@@ -1,7 +1,9 @@
 import React, {useState} from "react";
 import {
     Box,
-    Grid
+    Divider,
+    Grid,
+    Typography
 } from "@material-ui/core"
 import LineupSlot from "./LineupSlot/LineupSlot";
 import DraggableCard from "./DraggablePlayerCard/DraggablePlayerCard";
@@ -33,19 +35,28 @@ function LineupBoard() {
 
     return (
         <React.Fragment>
+            <Box mb={1}>
+                <Typography variant="h5">Available Players</Typography>
+            </Box>
             <Box mb={5}>
                 <Grid container spacing={3}>
                     {
                         players.map((player, i) => {
                             if (usedPlayers.has(i)) return;
                             return (
-                                <Grid item xs={4} key={i}>
+                                <Grid item xs={2} key={i}>
                                     <DraggableCard player={player} position={-1} avatarSize={5} />
                                 </Grid>
                             )
                         })
                     }
                 </Grid>
+            </Box>
+            <Box my={2}>
+                <Divider />
+            </Box>
+            <Box mb={1}>
+                <Typography variant="h5">Lineup</Typography>
             </Box>
             <Grid container spacing={3}>
                 {

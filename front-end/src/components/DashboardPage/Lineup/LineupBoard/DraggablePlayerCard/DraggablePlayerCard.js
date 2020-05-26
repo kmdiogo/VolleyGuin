@@ -10,6 +10,7 @@ import { useDrag } from "react-dnd";
 import DndItemTypes from "../../../../../constants/DndItemTypes";
 import PlayerCardContents from "../../../Players/PlayerCard/PlayerCardContents/PlayerCardContents";
 import PlayerCardPlaceholder from "../PlayerCardPlaceholder/PlayerCardPlaceholder";
+import DraggablePlayerCardContents from "../DraggablePlayerCardContents/DraggablePlayerCardContents";
 
 
 function DraggablePlayerCard(props) {
@@ -31,9 +32,9 @@ function DraggablePlayerCard(props) {
                 <CardContent>
                     {
                         !!player ? (
-                            <PlayerCardContents player={player} avatarSize={avatarSize} />
+                            <DraggablePlayerCardContents player={player} />
                         ) : (
-                            <PlayerCardPlaceholder />
+                            <DraggablePlayerCardContents player={{ firstName: 'Empty', lastName: 'Slot'}} />
                         )
                     }
                 </CardContent>
