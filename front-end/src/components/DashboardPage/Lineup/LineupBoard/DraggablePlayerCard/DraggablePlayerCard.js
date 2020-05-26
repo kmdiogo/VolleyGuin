@@ -13,7 +13,7 @@ import PlayerCardPlaceholder from "../PlayerCardPlaceholder/PlayerCardPlaceholde
 
 
 function DraggablePlayerCard(props) {
-    const { player, elevation, position } = props
+    const { player, elevation, position, avatarSize } = props
     const [{isDragging}, drag] = useDrag({
         item: {
             type: DndItemTypes.PLAYER_CARD,
@@ -31,7 +31,7 @@ function DraggablePlayerCard(props) {
                 <CardContent>
                     {
                         !!player ? (
-                            <PlayerCardContents player={player} />
+                            <PlayerCardContents player={player} avatarSize={avatarSize} />
                         ) : (
                             <PlayerCardPlaceholder />
                         )
@@ -46,6 +46,7 @@ DraggablePlayerCard.propTypes = {
     player: PropTypes.object,
     position: PropTypes.number.isRequired,
     elevation: PropTypes.number,
+    avatarSize: PropTypes.number.isRequired
 }
 
 export default DraggablePlayerCard

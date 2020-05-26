@@ -8,15 +8,15 @@ import PropTypes from 'prop-types'
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
-    avatar: {
-        width: theme.spacing(10),
-        height: theme.spacing(10)
-    }
+    avatar: props => ({
+        width: theme.spacing(props.avatarSize),
+        height: theme.spacing(props.avatarSize)
+    })
 }))
 
 function PlayerCardContents(props) {
-    const { player } = props
-    const classes = useStyles()
+    const { player, avatarSize } = props
+    const classes = useStyles({avatarSize})
 
     return (
         <React.Fragment>
@@ -37,6 +37,11 @@ function PlayerCardContents(props) {
 
 PlayerCardContents.propTypes = {
     player: PropTypes.object.isRequired,
+    avatarSize: PropTypes.number
+}
+
+PlayerCardContents.defaultProps = {
+    avatarSize: 10
 }
 
 export default PlayerCardContents

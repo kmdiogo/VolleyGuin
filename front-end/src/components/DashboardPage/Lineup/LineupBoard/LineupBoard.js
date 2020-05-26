@@ -15,17 +15,19 @@ function LineupBoard() {
     const [slots, setSlots] = useState([null, null, null, null, null, null])
     const [usedPlayers, setUsedPlayers] = useState(new Set())
 
-    function handleDrop({ dropPosition, player, lastPosition }) {
+    function handleDrop({ dropPosition, player, dragPosition }) {
+        console.log(dropPosition, player, dragPosition)
         const updatedSlots = update(slots, { $splice: [[dropPosition, 1, player.index]] })
 
         // Check if player card moved from lineup
-        if (lastPosition >= 0) {
-            updatedSlots[lastPosition] = null
+        if (dragPosition >= 0) {
+            updatedSlots[dragPosition] = null
         } else {
             const usedPlayersUpdated = new Set(usedPlayers)
-            usedPlayers.add(player.index)
+            usedPlayersUpdated.add(player.index)
             setUsedPlayers(usedPlayersUpdated)
         }
+        console.log(updatedSlots)
         setSlots(updatedSlots)
     }
 
@@ -38,7 +40,7 @@ function LineupBoard() {
                             if (usedPlayers.has(i)) return;
                             return (
                                 <Grid item xs={4} key={i}>
-                                    <DraggableCard player={player} position={-1} playerIndex={i} />
+                                    <DraggableCard player={player} position={-1} avatarSize={5} />
                                 </Grid>
                             )
                         })
@@ -48,7 +50,7 @@ function LineupBoard() {
             <Grid container spacing={3}>
                 {
                     slots.map((playerIndex, i) => (
-                        <LineupSlot position={i} onDrop={handleDrop} player={!!playerIndex ? players[playerIndex] : null} key={i} />
+                        <LineupSlot position={i} onDrop={handleDrop} player={players[playerIndex]} key={i} />
                     ))
                 }
             </Grid>
