@@ -25,7 +25,7 @@ function LineupSlot(props) {
 
     return (
         <Grid item xs={4} ref={drop}>
-            <DraggablePlayerCard player={player} position={position} avatarSize={10} />
+            <DraggablePlayerCard player={player} position={position} avatarSize={10} variant={isOver ? "outlined" : null} />
         </Grid>
     )
 }

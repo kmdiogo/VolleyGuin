@@ -1,20 +1,16 @@
 import React from "react";
 import PropTypes from 'prop-types'
-import PlayerCard from "../../../Players/PlayerCard/PlayerCard";
 import {
     Card,
-    CardContent,
-    CardActionArea
+    CardContent
 } from "@material-ui/core"
 import { useDrag } from "react-dnd";
 import DndItemTypes from "../../../../../constants/DndItemTypes";
-import PlayerCardContents from "../../../Players/PlayerCard/PlayerCardContents/PlayerCardContents";
-import PlayerCardPlaceholder from "../PlayerCardPlaceholder/PlayerCardPlaceholder";
-import DraggablePlayerCardContents from "../DraggablePlayerCardContents/DraggablePlayerCardContents";
+import DraggablePlayerCardContents from "./DraggablePlayerCardContents/DraggablePlayerCardContents";
 
 
 function DraggablePlayerCard(props) {
-    const { player, elevation, position, avatarSize } = props
+    const { player, position, variant, mini } = props
     const [{isDragging}, drag] = useDrag({
         item: {
             type: DndItemTypes.PLAYER_CARD,
@@ -26,19 +22,21 @@ function DraggablePlayerCard(props) {
         }),
     })
 
+    const style = {
+        cursor: player ? 'grab' : null
+    }
+
     return (
-        <Card ref={!!player ? drag : null}>
-            <CardActionArea>
-                <CardContent>
-                    {
-                        !!player ? (
-                            <DraggablePlayerCardContents player={player} />
-                        ) : (
-                            <DraggablePlayerCardContents player={{ firstName: 'Empty', lastName: 'Slot'}} />
-                        )
-                    }
-                </CardContent>
-            </CardActionArea>
+        <Card ref={!!player ? drag : null} elevation={5} variant={isDragging ? "outlined" : variant} style={style}>
+            <CardContent>
+                {
+                    !!player ? (
+                        <DraggablePlayerCardContents player={player} mini={mini} />
+                    ) : (
+                        <DraggablePlayerCardContents player={null} />
+                    )
+                }
+            </CardContent>
         </Card>
     )
 }
@@ -46,8 +44,12 @@ function DraggablePlayerCard(props) {
 DraggablePlayerCard.propTypes = {
     player: PropTypes.object,
     position: PropTypes.number.isRequired,
-    elevation: PropTypes.number,
-    avatarSize: PropTypes.number.isRequired
+    variant: PropTypes.string,
+    mini: PropTypes.bool
+}
+
+DraggablePlayerCard.defaultProps = {
+    mini: false
 }
 
 export default DraggablePlayerCard
