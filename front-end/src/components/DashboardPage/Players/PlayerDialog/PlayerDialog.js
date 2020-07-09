@@ -20,7 +20,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const cardMargins = 5
 
 function PlayerDialog(props) {
-    const { open, onClose } = props
+    const { onClose, player } = props
     const handleEmergencyAdd = (newData) => new Promise(resolve => {
         console.log(newData)
         resolve()
@@ -36,7 +36,7 @@ function PlayerDialog(props) {
     })
 
     return (
-        <Dialog fullScreen open={open} TransitionComponent={Transition}>
+        <Dialog fullScreen open={!!player} TransitionComponent={Transition}>
             <PlayerDialogAppBar onClose={onClose} />
             <Container>
                 <Box my={cardMargins}>
@@ -57,8 +57,8 @@ function PlayerDialog(props) {
 }
 
 PlayerDialog.propTypes = {
-    open: PropTypes.bool.isRequired,
-    onClose: PropTypes.func.isRequired
+    onClose: PropTypes.func.isRequired,
+    player: PropTypes.object.isRequired
 }
 
 export default PlayerDialog

@@ -10,18 +10,36 @@ const useStyles = makeStyles(theme => ({
     })
 }))
 
+// TODO: make this mapping more generic (to maybe support other sports? Not really a priority.)
+// used to map array indices on a grid to their respective volleyball position
+const positionMapping = ['IV', 'III', 'II', 'V', 'VI', 'I']
 function DraggablePlayerCardContents(props) {
-    const { player, mini } = props
+    const { player, mini, position } = props
 
     const classes = useStyles({avatarSize: mini ? 5 : 10})
     const name = player ? `${player.firstName} ${player.lastName}` : 'Empty Slot'
     const initials = player ? `${player.firstName[0]}${player.lastName[0]}` : null
-    return (
+
+    const contentsNoPlayer = (
+        <Box display="flex" justifyContent="center" mb={2}>
+            <Typography variant="h1" color="textSecondary">
+                { positionMapping[position] }
+            </Typography>
+        </Box>
+    )
+    const contentsWithPlayer = (
         <React.Fragment>
             <Box display="flex" justifyContent="center" mb={2}>
-                <Avatar className={classes.avatar}>
-                    {initials}
-                </Avatar>
+                <Box mr="auto">
+                    <Typography variant="body1">
+                        { positionMapping[position] }
+                    </Typography>
+                </Box>
+                <Box mr="auto">
+                    <Avatar className={classes.avatar} src={player && player.avatar}>
+                        {initials}
+                    </Avatar>
+                </Box>
             </Box>
             <Box display="flex" alignItems="center" flexDirection="column">
                 <Typography variant={mini ? 'body2' : 'h5'} color="textSecondary" component="p">
@@ -30,10 +48,14 @@ function DraggablePlayerCardContents(props) {
             </Box>
         </React.Fragment>
     )
+
+    return !player ? contentsNoPlayer : contentsWithPlayer
 }
 
 DraggablePlayerCardContents.propTypes = {
-    mini: PropTypes.bool
+    mini: PropTypes.bool,
+    position: PropTypes.number,
+    player: PropTypes.object
 }
 
 DraggablePlayerCardContents.defaultProps = {

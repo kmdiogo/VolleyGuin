@@ -7,38 +7,32 @@ import PlayerCard from "./PlayerCard/PlayerCard";
 import PrimaryActionFab from "../../shared/PrimaryActionFab";
 import ItemGrid from "../../material-utility/ItemGrid";
 import PlayerDialog from "./PlayerDialog/PlayerDialog";
-
-const players = [
-    { firstName: 'Dom', lastName: 'Eorio', position: 'President' },
-    { firstName: 'Matt', lastName: 'Hone', position: 'Vice President' },
-    { firstName: 'Nick', lastName: 'Petho', position: 'Nerd' },
-    { firstName: 'Luke', lastName: 'FromCafaro', position: 'CONST: fuck_that_bitch' }
-]
+import {db_players} from "../../../constants/mock-db";
 
 function Players() {
-    const [isDialogOpen, setIsDialogOpen] = useState(false)
+    const [editPlayer, setEditPlayer] = useState(null)
 
     function handlePlayerClick(player) {
-        setIsDialogOpen(true)
+        setEditPlayer(player)
     }
 
     function handleDialogClose() {
-        setIsDialogOpen(false)
+        setEditPlayer(null)
     }
 
     function searchByFullName(item) {
         return `${item.firstName} ${item.lastName}`
     }
 
-    const playerGridItems = players.map(player => ({
+    const playerGridItems = db_players.map(player => ({
         ...player,
-        component: <PlayerCard player={player} onClick={handlePlayerClick} />
+        component: <PlayerCard player={player} onClick={handlePlayerClick} avatar={player.avatar} />
     }))
 
     return (
         <Box>
             <ItemGrid items={playerGridItems} colsPerItem={4} sortBy={'lastName'} searchBy={[searchByFullName]} />
-            <PlayerDialog open={isDialogOpen} onClose={handleDialogClose} />
+            <PlayerDialog player={editPlayer} onClose={handleDialogClose} />
             <PrimaryActionFab icon={<AddIcon />} />
         </Box>
     );

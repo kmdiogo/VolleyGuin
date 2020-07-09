@@ -15,13 +15,13 @@ const useStyles = makeStyles(theme => ({
 }))
 
 function PlayerCardContents(props) {
-    const { player, avatarSize } = props
+    const { player, avatarSize, avatar } = props
     const classes = useStyles({avatarSize})
 
     return (
         <React.Fragment>
             <Box display="flex" justifyContent="center" mb={2}>
-                <Avatar className={classes.avatar} />
+                <Avatar className={classes.avatar} src={avatar} />
             </Box>
             <Box display="flex" alignItems="center" flexDirection="column">
                 <Typography gutterBottom variant="h5" component="h2">
@@ -37,6 +37,7 @@ function PlayerCardContents(props) {
 
 PlayerCardContents.propTypes = {
     player: PropTypes.object.isRequired,
+    avatar: PropTypes.string,
     avatarSize: PropTypes.number
 }
 

@@ -6,18 +6,12 @@ import {
     Typography
 } from "@material-ui/core"
 import LineupSlot from "./LineupSlot/LineupSlot";
-import DraggableCard from "./DraggablePlayerCard/DraggablePlayerCard";
 import update from 'immutability-helper'
 import AvailablePlayers from "./AvailablePlayers/AvailablePlayers";
+import {db_players} from "../../../../constants/mock-db";
 
 function LineupBoard() {
-    const [players, setPlayers] = useState([
-        {firstName: 'John', lastName: 'Doe', position: 'Loser'},
-        {firstName: 'Nick', lastName: 'Petho', position: 'Cool Guy'},
-        {firstName: 'Ur', lastName: 'Mum', position: 'Gey'},
-        {firstName: 'Yah', lastName: 'Yeet', position: ':)'},
-        {firstName: 'Mikulas', lastName: 'Petho', position: 'Cool Guy'}
-    ].map((p, i) => ({...p, index: i})))
+    const [players, setPlayers] = useState(db_players.map((p, i) => ({...p, index: i})))
     const [slots, setSlots] = useState([null, null, null, null, null, null])
     const [usedPlayers, setUsedPlayers] = useState(new Set())
 

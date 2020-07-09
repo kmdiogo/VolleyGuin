@@ -30,11 +30,12 @@ function DraggablePlayerCard(props) {
         <Card ref={!!player ? drag : null} elevation={5} variant={isDragging ? "outlined" : variant} style={style}>
             <CardContent>
                 {
-                    !!player ? (
+                    /*!!player ? (
                         <DraggablePlayerCardContents player={player} mini={mini} />
                     ) : (
                         <DraggablePlayerCardContents player={null} />
-                    )
+                    )*/
+                    <DraggablePlayerCardContents player={player} mini={mini} position={position} />
                 }
             </CardContent>
         </Card>
