@@ -28,7 +28,7 @@
     "sqlite3": "^4.2.0",
     "ts-node": "^8.10.1",
     "ts-node-dev": "^1.0.0-pre.44",
-    "typeorm": "^0.2.24",
+    "typeorm": "^0.2.25",
     "typescript": "^3.9.2"
   },
   "resolutions": {
